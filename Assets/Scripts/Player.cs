@@ -20,7 +20,7 @@ public class Player : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        collisionTracker = GetComponent<PlayerCollision>();
+        collisionTracker = GetComponentInChildren<PlayerCollision>();
         rb = GetComponentInChildren<Rigidbody>();
         boostTimeStamp = Time.time;
         circleDiameter = 25f;
@@ -52,7 +52,8 @@ public class Player : NetworkBehaviour {
         lastPosition = rb.transform.position;
 
         // Knocked out?
-        if (lastPosition.magnitude > circleDiameter/2f)
+        Debug.Log("Magnitude = " + lastPosition.magnitude);
+        if (lastPosition.magnitude > circleDiameter/2.0f)
         {
             collisionTracker.knockedOutOfRing();
         }

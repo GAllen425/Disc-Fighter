@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 
-public class PlayerCollision : NetworkBehaviour
+public class PlayerCollision : MonoBehaviour
 {
+    [SerializeField] bool logging = true;
     [SerializeField] private GameObject lastHit, currentHit;
     // Start is called before the first frame update
     void Start()
@@ -21,8 +22,13 @@ public class PlayerCollision : NetworkBehaviour
 
     void OnCollisionEnter (Collision collision)
     {
+
         if (collision.gameObject.tag == "Player")
         {
+            if (logging)
+            {
+                Debug.Log("Player collided with " + collision.gameObject.name);
+            }
             currentHit = collision.gameObject;
         }
     }

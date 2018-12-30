@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Camera : NetworkBehaviour {
+public class Camera : MonoBehaviour {
 
 	[SerializeField] Transform player;
 	private Vector3 separation;
